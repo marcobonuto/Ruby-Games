@@ -9,7 +9,7 @@ def da_boas_vindas
   puts "        \__|_|__/                              "
   puts
   puts "Qual é o seu nome?" 
-  nome = gets.strip
+  nome = gets.strip # Método que limpa o começo e o fim da string
   puts "\n\n\n\n\n\n"
   puts "Começaremos o jogo para você, #{nome}"
   nome
@@ -38,7 +38,7 @@ def sorteia_numero_secreto(dificuldade) # Verifica o valor da variável 'dificul
 	puts "Escolhendo um número secreto entre 1 e #{maximo}..."
 	sorteado = rand(maximo) + 1 # O rand vai escolher um valor randomico, vai variar de acordo com o valor da variável 'maximo' que foi determinado no método acima.
 	puts "Escolhido... que tal adivinhar hoje nosso número secreto?"
-	sorteado # Retorna o valor escolhido randomicamente através do 'rand'
+	return sorteado # Retorna o valor escolhido randomicamente através do 'rand' (eu nao preciso usar o return, estou usando para ficar mais legivel)
 end
 
 def pede_um_numero(chutes, tentativa, limite_de_tentativas) # Recebe 3 argumentos que serão passados na hora que chama o método.
@@ -46,9 +46,9 @@ def pede_um_numero(chutes, tentativa, limite_de_tentativas) # Recebe 3 argumento
 	puts "Tentativa #{tentativa} de #{limite_de_tentativas}"
 	puts "Chutes até agora: #{chutes}"
 	puts "Entre com o número"
-	chute = gets.strip # Armazena o palpite do usuario
+	chute = gets.strip # Armazena o palpite do usuario 
 	puts "Será que acertou? Você chutou #{chute}"
-	chute.to_i
+	return chute.to_i # No fim ela devolve (retorna) o chute, ja convertido em número através do método .to_i
 end
 
 def ganhou
@@ -85,7 +85,7 @@ def verifica_se_acertou(numero_secreto, chute)
 	else
 		puts "O número secreto é menor!"
 	end
-	false
+	return false # Mais uma vez eu nao preciso usar o return, estou usando somente para fixar
 end
 
 def joga(nome, dificuldade)
@@ -96,7 +96,7 @@ def joga(nome, dificuldade)
 	pontos_ate_agora = 1000 # Determina o valor da variável
 
 	for tentativa in 1..limite_de_tentativas # faz o for para percorrer 'tentativa'
-		chute = pede_um_numero chutes, tentativa, limite_de_tentativas
+		chute = pede_um_numero chutes, tentativa, limite_de_tentativas # Passando parametros sem os parenteses
 		chutes << chute # inclui os palpites dentro do array
 
 		if nome == "Guilherme"
